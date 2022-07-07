@@ -11,7 +11,7 @@ var miracle = new Schema(
     }
 );
 
-var extras = new Schema(
+var extra = new Schema(
     {
         name: {type: String, required: true, maxlength: 200},
         type: {type: String, required: true, maxlength: 20},    //types == extra, flaws, focus
@@ -28,4 +28,9 @@ var equipment = new Schema(
     }
 );
 //advanceAmmo ja ammoQualities
-module.exports = mongoose.model("extras", extras, 'extra');
+
+const extras = mongoose.model("extras", extra, 'extras');
+const miracles = mongoose.model("miracles", miracle, 'miracles');
+const equipments  = mongoose.model("equipments", equipment, 'equipments');
+
+module.exports = { extras, miracles, equipments }
