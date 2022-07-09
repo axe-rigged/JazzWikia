@@ -7,6 +7,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use("/", router);
 
+//Tee mahdollisesti databaseen admin user varmuudeksi. Hyvät tavat oppia databasen käsittelyssä.
+//Kummiskin teen sitä mariadb ja mysql kanssa niin parempi oppia tässäkin.
 const mongoDB = "mongodb://localhost:27017/wikia";
 mongoose.connect(mongoDB);
 const db = mongoose.connection;
