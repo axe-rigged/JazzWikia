@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const {extras, equipments, miracles} = require("./models/powers");
 
-//Toimiva database ja perus API pyynnöt
+//Toimiva database ja perus API pyynnöt. res.status(koodi numero).json({objecti:value}) tai json(object)
+//res.send(string tai object). Selvitä onko eroa
 router.get("/", (req,res)=>{
     res.send("Hello to Wildtalen wikia");
 })
@@ -12,7 +13,7 @@ router.get("/", (req,res)=>{
 router.get("/api/power", async(req, res)=>{
     try{
         const power = await extras.find();
-        res.send(power);
+        return res.status(200).json(power);
     }
     catch(err){
         return res.status(500).json({message: err.message});

@@ -36,6 +36,24 @@ var equipment = new Schema(
 );
 //advanceAmmo ja ammoQualities
 
+var source = new Schema(
+    {
+
+    }
+);
+
+var permission = new Schema(
+    {
+
+    }
+);
+
+var arche = new Schema(
+    {
+
+    }
+);
+
 const extras = mongoose.model("extras", extra, 'extras');
 const miracles = mongoose.model("miracles", miracle, 'miracles');
 const equipments  = mongoose.model("equipments", equipment, 'equipments');
