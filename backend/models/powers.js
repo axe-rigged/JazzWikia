@@ -27,6 +27,7 @@ var extra = new Schema(
     }
 );
 
+//advanceAmmo ja ammoQualities voi myöhemmin tehdä jos jaksaa aseita varten
 var equipment = new Schema(
     {
         name: {type: String, required: true, maxlength: 200, unique: true},
@@ -34,7 +35,6 @@ var equipment = new Schema(
         qualities: {type: String, required: false, maxlength: 200}
     }
 );
-//advanceAmmo ja ammoQualities
 
 var source = new Schema(
     {
@@ -48,6 +48,7 @@ var permission = new Schema(
     }
 );
 
+//Arche on tehty source, permissionista ja kuvailu sitä varten
 var arche = new Schema(
     {
 
