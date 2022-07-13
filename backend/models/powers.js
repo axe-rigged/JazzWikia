@@ -38,25 +38,37 @@ var equipment = new Schema(
 
 var source = new Schema(
     {
-
+        name: {type: String, required: true, maxlength: 50},
+        cost: {type: Number, required: true},
+        rule: {type: String, required: true}
     }
 );
 
 var permission = new Schema(
     {
-
+        name: {type: String, required: true, maxlength: 50},
+        cost: {type: Number, required: true},
+        rule: {type: String, required: true}
     }
 );
 
 //Arche on tehty source, permissionista ja kuvailu sitä varten
 var arche = new Schema(
     {
-
+        name: {type: String, required: true, maxlength: 50},
+        cost: {type: Number, required: true},
+        sources: {type: String, required: true, maxlength: 50}, //name of srouce
+        permissions: {type: String, required: true, maxlength: 50},
+        description: {type: String, required: true}
+        //Vielä tarvisi intrincis/meta qualitys
     }
 );
 
 const extras = mongoose.model("extras", extra, 'extras');
 const miracles = mongoose.model("miracles", miracle, 'miracles');
 const equipments  = mongoose.model("equipments", equipment, 'equipments');
+const sources = mongoose.model("sources", source, 'sources');
+const permissions = mongoose.model("permissions", permission, 'permissions');
+const arches = mongoose.model("arches", arche, 'arches');
 
-module.exports = { extras: extras, miracles: miracles, equipments:equipments }
+module.exports = { extras: extras, miracles: miracles, equipments:equipments, sources:sources, permissions:permissions, arches:arches}

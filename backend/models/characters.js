@@ -10,6 +10,7 @@ var character = new Schema(
     {
         point: {type: Number, required: true},
         name: {type: String, required: true, maxlength: 200},
+        profile: {Type: String}, //Pitää tarkistaa miten nodejs tallentaa kuvat tai miten me se tehdtään. Varmaan tehdää /var/www/wikia/media/
         occupation: {type: String, required: true, maxlength: 200},
         loyalty: {type: String, required: true, maxlength: 200},
         passion: {type: String, required: true, maxlength: 200},
@@ -45,7 +46,7 @@ var character = new Schema(
             leadership: {regular:{type: Number, required: true}, hard:{type: Number, required: true}, wiggle:{type: Number, required: true}},
             stability: {regular:{type: Number, required: true}, hard:{type: Number, required: true}, wiggle:{type: Number, required: true}},
         },
-        archetype: {type:{type: String, required: true, maxlength: 50}, cost:{type: Number, required: true}}, //pitääkö lyödäpoikki kahteen osaa. Statsit ja super voimat ja ne?
+        archetype: {type:{type: String, required: true, maxlength: 50}, cost:{type: Number, required: true}}, //Freactissa voi tarkistaa valmiita olevia ja ottaa sieltä ja se inertaa sit nimen ja costin tähä. Luo jos ei ole lennosta
         //power: [{miracle:{type: Object}, dices:{regular:{type: Number, required: true}, hard:{type: Number, required: true}, wiggle:{type: Number, required: true}}}] //<-- Miraclet tähän jotenkin.
         //Testataan tehdä niin et miracle on nimi ja sit haetaan se databasesta. Tarkistetaan ennen tallentamista et miracle on olemassa ja jos ei ole tallennetaan uusi miracle miracle collectioniin ja sitten charachter.
         //reactissa jotenkin joko painaa hakua, nähdä pikanen kuvaus miraclesta ja sit lisätä nimi ja nopat. Lennosta voisi mahdollisesti tehdä oman miraclen ja tallentaa enennen hahmon tallennusta?
