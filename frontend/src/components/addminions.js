@@ -1,0 +1,1 @@
+//make minions component that you just add to minions.js

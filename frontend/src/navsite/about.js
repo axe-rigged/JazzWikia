@@ -2,7 +2,7 @@ import "../App.css";
 
 function About() {
     return(
-        <div>
+        <div className="w-3/5 mx-auto">
             <h1 className="text-center text-2xl">
                 What is this?
             </h1>

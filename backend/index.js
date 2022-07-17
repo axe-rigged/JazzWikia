@@ -25,7 +25,6 @@ mongoose.connect(mongoDB);
 const db = mongoose.connection; // teeme objectin meidän connectionista ja sitten alemmas tarkistetaan ongelmat
 db.on('error', console.error.bind(console, 'MongoDB connection error'));
 
-//Mahdollisesti jossakin vaiheessa pitäisi vääntää unitest rakennukseen ominaisuuksille....
 //Mahdollisesti joku tunnistautuminen olisi kiva tehdä jotta voisi olla admin ominaisuuksia lisätä ja käviät vain katsoa
 const port = 8080;
 app.listen(port, () => {console.log(`Server is running on port ${port}`);});

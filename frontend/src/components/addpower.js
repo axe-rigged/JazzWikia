@@ -1,0 +1,1 @@
+//make power component that you just add to power.js
