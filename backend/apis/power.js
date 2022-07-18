@@ -22,6 +22,7 @@ router.get("/", async(req, res)=>{
 
 //Create and save new power(extra)
 router.post("/", async(req,res)=>{
+    console.log(req.body);
     const power = new extras({
         name: req.body.name,
         type: req.body.type,

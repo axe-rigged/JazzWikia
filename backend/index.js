@@ -5,9 +5,14 @@ const router = require("./apis/power");
 const routerE = require("./apis/equipment");
 const routerM = require("./apis/minion");
 const routerA = require("./apis/archetype")
+//const cors = require("cors")
 
 const app = express();
+//app.use(cors())
 //Learn better way to handel crossorigin request thinks for nodejs(cors or handmade) and django-cors. Understand better way concept
+app.use(express.json({
+    type: ['apllication/json', 'text/plain']
+}))
 app.use((req,res,next)=>{
     res.setHeader('Access-Control-Allow-Origin', 'http://192.168.8.116:3000')
     next();

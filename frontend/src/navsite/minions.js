@@ -1,24 +1,38 @@
 import "../App.css";
 import React, {useState, useEffect} from 'react'
-
+import AddMinion from "../components/AddMinions";
 //add maybe way to edit and save.
 function MINIONS(){
 
     const [minions, setMinions] = useState([]);
 
-    useEffect(()=>{
+    const fetchMinions = () =>{
         fetch('http://192.168.8.116:8080/api/minion')
         .then(response=>response.json())
         .then(data=>setMinions(data))
+        .then(data=>console.log(data))
         .catch(err => console.error(err))
+    }
+
+    useEffect(() => {
+        fetchMinions();
     },[]);
 
-    //return (div) tai jos meillä on => ilman {} niin se on return. HTML data pitää returnaa
+    const SaveMinion = (newMinion) =>{
+        fetch('http://192.168.8.116:8080/api/minion', {method: 'POST', body: JSON.stringify(newMinion)})
+        .then(response => fetchMinions())
+        .catch(err => console.error(err))
+    }
+
+
     //Lisää key id li jutuille. Itkien eteenpäin... koita tehdä base stats kauniimaksi
-    //for(x in minions.basetstats)=><li>{x} | {minions.basestats[x]}</li>
+    //for(x in minions.basetstats)=><li>{x} | {minions.basestats[x]}</li>. Eisaa tehdä render osiossa
     return (
     <div>
-        <h1 className="font-bold text-2xl mx-auto text-center pb-5">Minions:</h1>
+        <div className="flex flex-row w-1/5 mx-auto">
+        <h1 className="font-bold text-2xl text-center pb-5 basis-1/2">Minions:</h1>
+        <AddMinion SaveMinion={SaveMinion}/>
+        </div>
         <div className="grid grid-flow-row auto-rows-max">
             {
                 minions.map((minions, index)=><div className="overflow-y-auto mx-10 border-solid border-black border-2 w-1/5 max-h-600 rounded-lg min-w-min max-w-xs">
