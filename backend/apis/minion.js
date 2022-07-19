@@ -13,8 +13,9 @@ routerM.get("/", async(req, res)=>{
     }
 });
 
-//Create
+//Create, back endissä laske pisteet
 routerM.post("/", async(req,res)=>{
+    console.log(req.body);
     const minion = new minions({
         name: req.body.name,
         points: req.body.points,

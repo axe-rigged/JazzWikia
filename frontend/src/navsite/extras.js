@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import AddPower from "../components/AddPower";
 
 //lisää tapa järjestää jutut
-//Tee mielummin korteiksi jokainen kyky ja laita ne 3-4 grid cloumeihin ja ruudun mukaa sit 1 asti ja isomlla jne enmmän
+//!!Tee mielummin korteiksi jokainen kyky ja laita ne 3-4 grid cloumeihin ja ruudun mukaa sit 1 asti ja isomlla jne enmmän
 function EXTRA(){
 
     const [powers, setPowers] = useState([]);

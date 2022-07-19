@@ -26,8 +26,9 @@ function AddPower(props) {
     return(
         <div className="">
             <button className="basis-1/2 px-10 rounded-full border-solid border-black border-2 text-white bg-blue-500" onClick={handlerOpen}>Add power</button>
-            <dialog className="w-3/5" open={open}>
-                <h1>New Power</h1>
+            <dialog className="w-3/5 rounded-lg border-solid border-black border-2 " open={open}>
+                <h1 className="text-center">New Power</h1>
+                <div>
                 <label >Name</label>
                 <input name="name" type="text" onChange={inputChanged} value={power.name}/>
                 <label >Type</label>
@@ -36,8 +37,11 @@ function AddPower(props) {
                 <input name="cost" type="number" onChange={inputChanged} value={power.cost}/>
                 <label >Effect</label>
                 <input name="effect" type="text" onChange={inputChanged} value={power.effect}/>
-                <button onClick={savePower}>Save</button>
-                <button onClick={handlerClose}>Cancel</button>
+                </div>
+                <div>
+                    <button onClick={savePower}>Save</button>
+                    <button onClick={handlerClose}>Cancel</button>
+                </div>
             </dialog>
         </div>
     );

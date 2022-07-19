@@ -1,5 +1,5 @@
 import "../App.css";
-
+//Change  ulkonäkö ja ehkä naama kuva mukaan. Myös jotain pieni juttu.
 function About() {
     return(
         <div className="w-3/5 mx-auto">

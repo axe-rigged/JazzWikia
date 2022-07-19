@@ -1,14 +1,28 @@
 //Ctrl+c/v. PItää koittaa jos voisi tehdä componenteiksi ja käyttää useammassa paikassa.
 //material-ui dialog jutut voisi olla hyödyksi, mutta me tehdää vähän itse asiat tailwindilla
 //MUISTA ETTÄ KUN SET() NIIN SISÄLLÄ PITÄÄ KÄYTTÄÄ {}, jos on objecti tai [], jos kyseessä on lista/array
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 
 function AddMinion(props) {
     const [open, setOpen] = useState(false);
     const [minion, setMinion] = useState({name:"", points:0, basestats:{}, basewill:0, skills:[]})
-    const [skill, setSkill] = useState({skill:"", dices:0});
-    const [lista, setLista] = useState([]);
+    
+    const[name, setName] = useState("");
+    const[basewill, setBasewill] = useState(0);
 
+    const [stat, setStat] = useState({body:0, coordinatuion:0, sense:0, mind:0, charm:0, command:0});
+
+    const [lista, setLista] = useState([]);
+    const [skill, setSkill] = useState({skill:"", dices:0});
+    
+    //Clear, delete and edit buttons needed. Different component. Jalka component tiedoille ja pika tiedoille
+    //Tule muokaamaan niin, että tämä pysyy perässä tai tallentaa effectin kautta
+    //[depency on joku true]=>tehdää jutut ja sitten save ja false...REDUX TIME. Meillä on aivan liian paljon juttuja jotka ei toimi asyncissa. Puuttuu dataa tai muuta kun sendaa
+    useEffect(()=>{
+        console.log(minion)
+    },[minion])
+    
+    
     const handlerOpen = () =>{
         setOpen(true);
     }
@@ -16,75 +30,72 @@ function AddMinion(props) {
         setOpen(false);
     }
 
+    const saveminion = () =>{
+        setMinion({name:name, points:0, basewill:basewill, basestats:stat, skills:lista}, saveMinion());
+    }
+
     const saveMinion = () =>{
-        console.log(point());
-        console.log(minion)
-        //props.SaveMinion(minion);
+        props.SaveMinion(minion);
         handlerClose();
     }
 
-    const point = () => {
-        var total = 0;
-        for(var x of minion.basestats){total += x*5;}
-        for(var y of lista){total += y.dices*2}
-        total += minion.basewill*3
-        return total;
+    const inputChanged = (event) => {
+        setStat({...stat, [event.target.name]: event.target.value});
     }
     
-    const inputChanged = (event) => {
-        setMinion({...minion, [event.target.name]: event.target.value});
-    }
     const inputSkill = (event) => {
         setSkill({...skill, [event.target.name]: event.target.value});
     }
-
     const adds = () => {
         setLista([...lista, skill]);
         setSkill({skill:"", dices:0});
     }
-
-
+    
+    //row-span-{n}
     return(
-        <div className="center">
-            <button className="basis-1/2 px-10 rounded-full border-solid border-black border-2 text-white bg-blue-500" onClick={handlerOpen}>Add Minion</button>
-            <dialog className="w-3/5" open={open}>
-                <h1 className="text-center">New Minion</h1>
-                <div className="">
+        <div className="">
+            <button className="basis-1/2 px-10 rounded-full border-solid border-black border-2 text-white bg-violet-600" onClick={handlerOpen}>Add Minion</button>
+            <dialog className="w-3/5 rounded-lg border-solid border-black border-2 " open={open}>
+                <h1 className="text-center my-4 underline">New Minion</h1>
+                <div className="grid grid-cols-2 grid-rows-3 gap-2 w-1/2 mx-auto">
                     <label >Name:</label>
-                    <input name="name" type="text" onChange={inputChanged} value={minion.name}/>
+                    <input className="border" name="name" type="text" onChange={(event)=>{setName(event.target.value)}} value={name}/>
                     <label >Basewill:</label>
-                    <input name="basewill" type="number" onChange={inputChanged} value={minion.basewill}/>
-                    <h1 className="text-center">Basestats:</h1>
-                    <label>Body</label>
-                    <input name="basestats.body" type="number" onChange={inputChanged} value={minion.basestats.body} placeholder="Body"/>
+                    <input className="border" name="basewill" type="number" onChange={(event)=>{setBasewill(event.target.value)}} value={basewill}/>
+                </div>
+                <h1 className="text-center my-4 underline">Basestats:</h1>
+                <div className="grid gap-4 grid-rows-3 grid-cols-2 w-1/2 mx-auto">
+                    <label >Body</label>
+                    <input name="body" type="number" onChange={inputChanged} value={stat.body}  className="border"/>
                     <label>Coordination</label>
-                    <input name="basestats.coordinatuion" type="number" onChange={inputChanged} value={minion.basestats.coordinatuion} placeholder="coordination"/>
+                    <input name="coordinatuion" type="number" onChange={inputChanged} value={stat.coordinatuion}  className="border"/>
                     <label>Sense</label>
-                    <input name="basestats.sense" type="number" onChange={inputChanged} value={minion.basestats.sense} placeholder="sense"/>
+                    <input name="sense" type="number" onChange={inputChanged} value={stat.sense}  className="border"/>
                     <label>Mind</label>
-                    <input name="basestats.mind" type="number" onChange={inputChanged} value={minion.basestats.mind} placeholder="mind"/>
+                    <input name="mind" type="number" onChange={inputChanged} value={stat.mind}  className="border"/>
                     <label>Charm</label>
-                    <input name="basestats.charm" type="number" onChange={inputChanged} value={minion.basestats.charm} placeholder="charm"/>
+                    <input name="charm" type="number" onChange={inputChanged} value={stat.charm}  className="border"/>
                     <label>Command</label>
-                    <input name="basestats.command" type="number" onChange={inputChanged} value={minion.basestats.command} placeholder="command"/>
+                    <input name="command" type="number" onChange={inputChanged} value={stat.command}  className="border"/>
                 </div>
                 <br/>
                 
                 <h1 className="text-center">Skills:</h1>
-                <div className="flex w-1/2 mx-auto">
-                    <input className="basis-1/3" name="skill" type="text" onChange={inputSkill} value={skill.skill} placeholder="Skill name"/>
-                    <input className="basis-1/3" name="dices" type="number" onChange={inputSkill} value={skill.dices} placeholder="Dices"/>
-                    <button className="basis-1/3 text-2xl" onClick={adds}>+</button>
+                <div className="grid grid-cols-3 gap-2 mx-auto w-4/5">
+                    <input className="border" name="skill" type="text" onChange={inputSkill} value={skill.skill} placeholder="Skill name"/>
+                    <input className="border" name="dices" type="number" onChange={inputSkill} value={skill.dices} placeholder="Dices"/>
+                    <button className="text-2xl rounded-full border-solid border-black border-2 text-white bg-violet-600" onClick={adds}>+</button>
                 </div>
-                <ul>
+                <ul className="w-4/5 mx-auto">
                     {
-                        lista.map((lista,index)=><li key={index}>{lista.skill}</li>)
+                        lista.map((lista,index)=><li key={index}>{lista.skill} | {lista.dices}</li>)
                     }
                 </ul>
                 <br/>
-                <br/>
-                <button onClick={saveMinion}>Save</button>
-                <button onClick={handlerClose}>Cancel</button>
+                <div className="w-1/2 mx-auto grid grid-cols-2 gap-4">
+                    <button className="px-10 rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-green-500" onClick={saveminion}>Save</button>
+                    <button className="px-10 rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-red-500" onClick={handlerClose}>Cancel</button>
+                </div>
             </dialog>
         </div>
     );
