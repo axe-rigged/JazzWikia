@@ -8,4 +8,4 @@ module.exports = {
   },
   plugins: [],
 }
-}
+}//Opettele tekemään omia classeja

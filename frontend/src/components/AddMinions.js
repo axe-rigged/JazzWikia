@@ -16,11 +16,12 @@ function AddMinion(props) {
     const [skill, setSkill] = useState({skill:"", dices:0});
     
     //Clear, delete and edit buttons needed. Different component. Jalka component tiedoille ja pika tiedoille
-    //Tule muokaamaan niin, että tämä pysyy perässä tai tallentaa effectin kautta
-    //[depency on joku true]=>tehdää jutut ja sitten save ja false...REDUX TIME. Meillä on aivan liian paljon juttuja jotka ei toimi asyncissa. Puuttuu dataa tai muuta kun sendaa
+
+    //Miksi tää on tapa nytten saada toimimaan koko homaa?!?! ME päivitetään koko minion objecti aina kun lisata muutetaan a.k.a lisätään objecteja. Kummiskin pitää olla yksi minimissä backendia varten vaikaa ei ole requmentia laitettu vielä
+    //useCallback tai jokin muu pitää opetella. Mutta ei idea miten parhaiten updatee koko homma kun valittaa miljoonasta asiasta. Palaa myöhemmin takas tähän useEffectiin
     useEffect(()=>{
-        console.log(minion)
-    },[minion])
+        saveminion();
+    }, [lista])// eslint-disable-line react-hooks/exhaustive-deps
     
     
     const handlerOpen = () =>{
@@ -30,11 +31,12 @@ function AddMinion(props) {
         setOpen(false);
     }
 
-    const saveminion = () =>{
-        setMinion({name:name, points:0, basewill:basewill, basestats:stat, skills:lista}, saveMinion());
+    function saveminion (){
+        //setMinion({name:name, points:0, basewill:basewill, basestats:stat, skills:lista});
+        setMinion({...minion, name:name, points:0, basewill:basewill, basestats:stat, skills:lista});
     }
 
-    const saveMinion = () =>{
+    function saveMinion() {
         props.SaveMinion(minion);
         handlerClose();
     }
@@ -93,7 +95,7 @@ function AddMinion(props) {
                 </ul>
                 <br/>
                 <div className="w-1/2 mx-auto grid grid-cols-2 gap-4">
-                    <button className="px-10 rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-green-500" onClick={saveminion}>Save</button>
+                    <button className="px-10 rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-green-500" onClick={saveMinion}>Save</button>
                     <button className="px-10 rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-red-500" onClick={handlerClose}>Cancel</button>
                 </div>
             </dialog>

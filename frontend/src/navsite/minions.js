@@ -35,7 +35,7 @@ function MINIONS(){
         </div>
         <div className="grid grid-cols-4 gap-2 w-4/5 mx-auto">
             {
-                minions.map((minions, index)=><div className="overflow-y-auto border-solid border-black border-4 max-h-600 rounded-lg min-w-min max-w-xs bg-slate-800 text-white">
+                minions.map((minions, index)=><div className="overflow-y-auto border-solid border-purple-800 border-4 max-h-600 rounded-lg min-w-min max-w-xs bg-slate-800 text-white">
                     <h1 className="underline text-xl text-center">{minions.name}</h1>
                     <p className="text-center">Points: {minions.points}</p>
                     <p className="text-center">Basewill: {minions.basewill}</p>

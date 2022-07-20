@@ -22,25 +22,26 @@ function AddPower(props) {
     const inputChanged = (event) => {
         setPower({...power, [event.target.name]: event.target.value});
     }
-
+    //html <form/> voisi antaa muutaman mukavan edun esimerkiksi valmiin objectin tai tarkistus syntaxin et ei voi lähettää tyhjää... 
     return(
         <div className="">
             <button className="basis-1/2 px-10 rounded-full border-solid border-black border-2 text-white bg-blue-500" onClick={handlerOpen}>Add power</button>
             <dialog className="w-3/5 rounded-lg border-solid border-black border-2 " open={open}>
-                <h1 className="text-center">New Power</h1>
-                <div>
+                <h1 className="text-center my-4 underline">New Power</h1>
+                <div className="grid gap-4 grid-rows-3 grid-cols-2 w-1/2 mx-auto">
                 <label >Name</label>
-                <input name="name" type="text" onChange={inputChanged} value={power.name}/>
+                <input name="name" type="text" className="border text-center" onChange={inputChanged} value={power.name}/>
                 <label >Type</label>
-                <input name="type" type="text" onChange={inputChanged} value={power.type}/>
+                <input name="type" type="text" className="border text-center" onChange={inputChanged} value={power.type}/>
                 <label >Cost</label>
-                <input name="cost" type="number" onChange={inputChanged} value={power.cost}/>
+                <input name="cost" type="number" className="border text-center" onChange={inputChanged} value={power.cost}/>
                 <label >Effect</label>
-                <input name="effect" type="text" onChange={inputChanged} value={power.effect}/>
+                <input name="effect" type="text" className="border text-center" onChange={inputChanged} value={power.effect}/>
                 </div>
-                <div>
-                    <button onClick={savePower}>Save</button>
-                    <button onClick={handlerClose}>Cancel</button>
+                <br/>
+                <div className="w-1/2 mx-auto grid grid-cols-2 gap-4">
+                    <button className="px-10 rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-green-500" onClick={savePower}>Save</button>
+                    <button className="px-10 rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-red-500" onClick={handlerClose}>Cancel</button>
                 </div>
             </dialog>
         </div>

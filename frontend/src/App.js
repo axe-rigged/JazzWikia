@@ -9,8 +9,8 @@ import MINIONS from './navsite/minions';
 //Meidän pitää luoda tapa et tämä toimii puhelimella. Kortit mene päin vittua nopeasti
 function App() {
   return (
-    <div className="bg-gradient-to-r from-cyan-500 to-pink-500 pb-10 h-screen">
-      <h1 className='text-5xl font-sans text-center py-4'>WildWikia</h1>
+    <div className="bg-gradient-to-r from-cyan-500 to-pink-500 pb-10 min-h-screen h-full">
+      <h1 className='text-5xl font-sans text-center py-4 '>WildWikia</h1>
       <nav className='text-center static mb-5 bg-slate-800'>
         <Link className='mx-5 text-xl text-white' to="/extra">EXTRA</Link>
         <Link className='mx-5 text-xl text-white' to="/minions">MINIONS</Link>
@@ -21,7 +21,7 @@ function App() {
             <Route path='/minions' element={<MINIONS/>} />
             <Route path='/about' element={<About/>} />
         </Routes>
-    <p className='fixed bottom-0 left-1/2'>WIP</p>
+    <p className='fixed bottom-0 left-1/2 text-yellow-200'>WIP</p>
     </div>
   );
 }

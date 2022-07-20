@@ -34,13 +34,13 @@ function EXTRA(){
         <AddPower SavePower={SavePower}/>
         </div>
         <div className="">
-            <table className="table-fixed mx-auto w-4/5">
-                <thead>
+            <table className="table-fixed mx-auto w-4/5 text-white">
+                <thead className="bg-slate-800">
                     <tr><th>Power:</th><th>Type:</th><th>Cost:</th><th>Effect</th></tr>
                 </thead>
-                <tbody>
+                <tbody className="bg-slate-600">
                     {
-                    powers.map((powers,index)=><tr key={index}><td className="text-center">{powers.name}</td><td className="text-center">{powers.type}</td><td className="text-center">{powers.cost}</td><td className="text-center">{powers.effect}</td></tr>)
+                    powers.map((powers,index)=><tr key={index}><td className="text-center border-black border-b py-4">{powers.name}</td><td className="text-center border-black border-b">{powers.type}</td><td className="text-center border-black border-b">{powers.cost}</td><td className="text-center border-black border-b">{powers.effect}</td></tr>)
                     }
                 </tbody>
             </table>
