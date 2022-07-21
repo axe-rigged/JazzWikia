@@ -3,9 +3,7 @@ import "../App.css";
 function Home(){
     return(
         <div>
-            <a>
-                <img/>
-            </a>
+
         </div>
     );
 }

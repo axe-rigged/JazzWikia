@@ -35,7 +35,7 @@ function EXTRA(){
         </div>
         <div className="">
             <table className="table-fixed mx-auto w-4/5 text-white">
-                <thead className="bg-slate-800">
+                <thead className="bg-slate-800 border-b-2 border-slate-400">
                     <tr><th>Power:</th><th>Type:</th><th>Cost:</th><th>Effect</th></tr>
                 </thead>
                 <tbody className="bg-slate-600">
