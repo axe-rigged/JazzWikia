@@ -29,8 +29,8 @@ function EXTRA(){
 
     return (
     <div>
-        <div className="flex flex-row w-1/5 mx-auto">
-        <h1 className="font-bold text-center mb-5 text-2xl basis-1/2">Powers:</h1>
+        <div className="grid grid-cols-2 w-2/5 mx-auto">
+        <h1 className="font-bold text-center mb-5 text-2xl">Powers:</h1>
         <AddPower SavePower={SavePower}/>
         </div>
         <div className="">

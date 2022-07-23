@@ -25,7 +25,7 @@ function AddPower(props) {
     //html <form/> voisi antaa muutaman mukavan edun esimerkiksi valmiin objectin tai tarkistus syntaxin et ei voi lähettää tyhjää... 
     return(
         <div className="">
-            <button className="basis-1/2 px-10 rounded-full border-solid border-black border-2 text-white bg-blue-500" onClick={handlerOpen}>Add power</button>
+            <button className="px-10 rounded-full border-solid border-black border-2 text-white bg-blue-500" onClick={handlerOpen}>Add power</button>
             <dialog className="w-3/5 rounded-lg border-solid border-black border-2 " open={open}>
                 <h1 className="text-center my-4 underline">New Power</h1>
                 <div className="grid gap-4 grid-rows-3 grid-cols-2 w-1/2 mx-auto">

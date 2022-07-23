@@ -1,6 +1,7 @@
 import "../App.css";
 import React, {useState, useEffect} from 'react'
 import AddMinion from "../components/AddMinions";
+import DeleteMinion from "../components/DeleteMinion";
 //add maybe way to edit and save.
 function MINIONS(){
 
@@ -29,14 +30,17 @@ function MINIONS(){
     //for(x in minions.basetstats)=><li>{x} | {minions.basestats[x]}</li>. Eisaa tehdä render osiossa
     return (
     <div>
-        <div className="flex flex-row w-1/5 mx-auto">
-        <h1 className="font-bold text-2xl text-center pb-5 basis-1/2">Minions:</h1>
+        <div className="grid grid-cols-2 w-2/5 mx-auto">
+        <h1 className="font-bold text-2xl text-center pb-5">Minions:</h1>
         <AddMinion SaveMinion={SaveMinion}/>
         </div>
         <div className="grid grid-cols-4 gap-2 w-4/5 mx-auto">
             {
                 minions.map((minions, index)=><div className="overflow-y-auto border-solid border-purple-800 border-4 max-h-600 rounded-lg min-w-min max-w-xs bg-slate-800 text-white">
-                    <h1 className="underline text-xl text-center">{minions.name}</h1>
+                    <div className="grid grid-cols-6 items-center">
+                    <h1 className="underline text-xl text-center col-start-3 col-end-5">{minions.name}</h1>
+                    <DeleteMinion minion={minions}/>
+                    </div>
                     <p className="text-center">Points: {minions.points}</p>
                     <p className="text-center">Basewill: {minions.basewill}</p>
                     <h1 className="underline text-xl text-center">Bastestas</h1>

@@ -16,7 +16,7 @@ function AddMinion(props) {
     const [skill, setSkill] = useState({skill:"", dices:0});
     
     //Clear, delete and edit buttons needed. Different component. Jalka component tiedoille ja pika tiedoille
-
+    //WE could just track all stats and creat object before send it to backend.
     //Miksi tää on tapa nytten saada toimimaan koko homaa?!?! ME päivitetään koko minion objecti aina kun lisata muutetaan a.k.a lisätään objecteja. Kummiskin pitää olla yksi minimissä backendia varten vaikaa ei ole requmentia laitettu vielä
     //useCallback tai jokin muu pitää opetella. Mutta ei idea miten parhaiten updatee koko homma kun valittaa miljoonasta asiasta. Palaa myöhemmin takas tähän useEffectiin
     useEffect(()=>{
@@ -56,7 +56,7 @@ function AddMinion(props) {
     //row-span-{n}
     return(
         <div className="">
-            <button className="basis-1/2 px-10 rounded-full border-solid border-black border-2 text-white bg-violet-600" onClick={handlerOpen}>Add Minion</button>
+            <button className="px-10 rounded-full border-solid border-black border-2 text-white bg-violet-600" onClick={handlerOpen}>Add Minion</button>
             <dialog className="w-3/5 rounded-lg border-solid border-black border-2 " open={open}>
                 <h1 className="text-center my-4 underline">New Minion</h1>
                 <div className="grid grid-cols-2 grid-rows-3 gap-2 w-1/2 mx-auto">
