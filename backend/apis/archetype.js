@@ -1,7 +1,7 @@
 const express = require("express");
 const routerA = express.Router();
 const {sources, permissions, arches} = require("../models/powers");
-//Opette tietää millon käyttää custom response res.status.json() vs res.send()
+//Opette tietää millon käyttää custom response res.status.json() vs res.send(). KORJAA EXTRAT POIS
 //sources
 //Get
 routerA.get("/source", async(req, res)=>{

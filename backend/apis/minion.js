@@ -34,7 +34,7 @@ routerM.post("/", async(req,res)=>{
 
 //delete
 routerM.delete("/", (req,res)=>{
-    extras.deleteOne({name: req.body.name}, async(err,result)=>{
+    minions.deleteOne({_id: req.body.minion._id}, async(err,result)=>{
         if(err){return res.status(500).json({message: err.message})}
         else{return res.status(200).json(result)}
     });
@@ -43,7 +43,7 @@ routerM.delete("/", (req,res)=>{
 
 //put
 routerM.put("/", (req,res)=>{
-    extras.findOneAndUpdate({name: req.body.name}, req.body, {new:true}, async(err,result)=>{
+    minions.findOneAndUpdate({_id: req.body.minion._id}, req.body, {new:true}, async(err,result)=>{
         if(err){return res.status(500).json({message: err.message})}
         else{return res.status(200).json(result)}
     });

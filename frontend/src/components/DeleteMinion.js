@@ -1,20 +1,20 @@
 import { useState } from "react";
 import trash from "./trash.svg"
-//Try to take id to here and make button that ask question before delete request.
-//Delete icon or logo button
+
 function DeleteMinion (props) {
     const [open, setOpen] = useState(false);
 
     const deleteMinion = () => {
-        fetch('http://192.168.8.116:8080/api/minion',{method: 'DELETE', body: {props}})
-        //.then(fetch)
-        //.catch(err=>console.log(err))
-        console.log(props.minion.name);
+        var minion = props.minionsAtr.minions;
+        fetch('http://192.168.8.116:8080/api/minion',{method: 'DELETE', body: JSON.stringify({minion})})
+        .then(response=>props.minionsAtr.fetchMinions())
+        .catch(err=>console.log(err))
+        console.log(minion._id);
         setOpen(false)
     }
 
     return(
-        <div className="col-start-6 col-end-6 mx-auto py-2">
+        <div className="col-start-6 col-end-6 mx-auto my-auto py-2">
             <button onClick={()=>{setOpen(true)}}>
                     <img src={trash} alt="trashcan" className="w-6 h-6 bg-yellow-300 rounded-full"/>
             </button>

@@ -26,7 +26,7 @@ function MINIONS(){
     }
 
 
-    //Lisää key id li jutuille. Itkien eteenpäin... koita tehdä base stats kauniimaksi
+    //Lisää key id li jutuille. Itkien eteenpäin... Ei uudistu kun poistaa.
     //for(x in minions.basetstats)=><li>{x} | {minions.basestats[x]}</li>. Eisaa tehdä render osiossa
     return (
     <div>
@@ -39,7 +39,7 @@ function MINIONS(){
                 minions.map((minions, index)=><div className="overflow-y-auto border-solid border-purple-800 border-4 max-h-600 rounded-lg min-w-min max-w-xs bg-slate-800 text-white">
                     <div className="grid grid-cols-6 items-center">
                     <h1 className="underline text-xl text-center col-start-3 col-end-5">{minions.name}</h1>
-                    <DeleteMinion minion={minions}/>
+                    <DeleteMinion minionsAtr={{minions,fetchMinions}}/>
                     </div>
                     <p className="text-center">Points: {minions.points}</p>
                     <p className="text-center">Basewill: {minions.basewill}</p>

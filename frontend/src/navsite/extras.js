@@ -1,6 +1,7 @@
 import "../App.css";
 import React, {useState, useEffect} from 'react'
 import AddPower from "../components/AddPower";
+import DeletePower from "../components/DeletePower";
 
 //lisää tapa järjestää jutut
 //!!Tee mielummin korteiksi jokainen kyky ja laita ne 3-4 grid cloumeihin ja ruudun mukaa sit 1 asti ja isomlla jne enmmän
@@ -40,7 +41,7 @@ function EXTRA(){
                 </thead>
                 <tbody className="bg-slate-600">
                     {
-                    powers.map((powers,index)=><tr key={index}><td className="text-center border-black border-b py-4">{powers.name}</td><td className="text-center border-black border-b">{powers.type}</td><td className="text-center border-black border-b">{powers.cost}</td><td className="text-center border-black border-b">{powers.effect}</td></tr>)
+                    powers.map((powers,index)=><tr key={index}><td className="text-center border-black border-b py-4">{powers.name}<DeletePower extraAtr={{powers, fetchPowers}}/></td><td className="text-center border-black border-b">{powers.type}</td><td className="text-center border-black border-b">{powers.cost}</td><td className="text-center border-black border-b">{powers.effect}</td></tr>)
                     }
                 </tbody>
             </table>

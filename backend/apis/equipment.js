@@ -33,7 +33,7 @@ routerE.post("/", async(req,res)=>{
 
 //Delete
 routerE.delete("/", (req,res)=>{
-    extras.deleteOne({name: req.body.name}, async(err,result)=>{
+    equipments.deleteOne({name: req.body.name}, async(err,result)=>{
         if(err){return res.status(500).json({message: err.message})}
         else{return res.status(200).json(result)}
     });
@@ -42,7 +42,7 @@ routerE.delete("/", (req,res)=>{
 
 //PUT
 routerE.put("/", (req,res)=>{
-    extras.findOneAndUpdate({name: req.body.name}, req.body, {new:true}, async(err,result)=>{
+    equipments.findOneAndUpdate({_id: req.body.equipment._id}, req.body, {new:true}, async(err,result)=>{
         if(err){return res.status(500).json({message: err.message})}
         else{return res.status(200).json(result)}
     });

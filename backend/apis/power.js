@@ -39,18 +39,18 @@ router.post("/", async(req,res)=>{
 });
 
 
-//delete by name/ID
+//delete 
 router.delete("/", (req,res)=>{
-    extras.deleteOne({name: req.body.name}, async(err,result)=>{
+    console.log(req.body.extra)
+    extras.deleteOne({_id: req.body.extra._id}, async(err,result)=>{
         if(err){return res.status(500).json({message: err.message})}
         else{return res.status(200).json(result)}
     });
 
 });
-//PUT by name/ID.
-//Tulevaisuudessa vaihda name => id
+//PUT 
 router.put("/", (req,res)=>{
-    extras.findOneAndUpdate({name: req.body.name}, req.body, {new:true}, async(err,result)=>{
+    extras.findOneAndUpdate({_id: req.body.extra._id}, req.body, {new:true}, async(err,result)=>{
         if(err){return res.status(500).json({message: err.message})}
         else{return res.status(200).json(result)}
     });
