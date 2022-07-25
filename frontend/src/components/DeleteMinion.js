@@ -1,5 +1,5 @@
 import { useState } from "react";
-import trash from "./trash.svg"
+import trash from "../images/trash.svg";
 
 function DeleteMinion (props) {
     const [open, setOpen] = useState(false);
@@ -14,7 +14,7 @@ function DeleteMinion (props) {
     }
 
     return(
-        <div className="col-start-6 col-end-6 mx-auto my-auto py-2">
+        <div className="col-start-6 col-end-6 py-2">
             <button onClick={()=>{setOpen(true)}}>
                     <img src={trash} alt="trashcan" className="w-6 h-6 bg-yellow-300 rounded-full"/>
             </button>

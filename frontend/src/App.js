@@ -10,8 +10,10 @@ import Home from './navsite/home';
 //Meidän pitää luoda tapa et tämä toimii puhelimella. Kortit mene päin vittua nopeasti
 function App() {
   return (
-    <div className="bg-gradient-to-r from-cyan-500 to-pink-500 pb-10 min-h-screen h-full">
-      <h1 className='text-5xl font-sans text-center py-4 '>WildWikia</h1>
+    <div className="bg-gradient-to-r from-cyan-500 to-violet-500 pb-10 min-h-screen h-full">
+      <div className='text-5xl font-extrabold  text-center py-4'><span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-orange-400">
+      WildWikia
+      </span></div>
       <nav className='text-center mb-5 py-2 bg-slate-800 sticky top-0 border-b-2 border-slate-400'>
         <Link className='mx-5 text-xl text-white' to="/">HOME</Link>
         <Link className='mx-5 text-xl text-white' to="/extra">EXTRA</Link>

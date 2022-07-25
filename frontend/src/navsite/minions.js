@@ -37,7 +37,7 @@ function MINIONS(){
         <div className="grid grid-cols-4 gap-2 w-4/5 mx-auto">
             {
                 minions.map((minions, index)=><div className="overflow-y-auto border-solid border-purple-800 border-4 max-h-600 rounded-lg min-w-min max-w-xs bg-slate-800 text-white">
-                    <div className="grid grid-cols-6 items-center">
+                    <div className="grid grid-cols-6 place-items-center">
                     <h1 className="underline text-xl text-center col-start-3 col-end-5">{minions.name}</h1>
                     <DeleteMinion minionsAtr={{minions,fetchMinions}}/>
                     </div>

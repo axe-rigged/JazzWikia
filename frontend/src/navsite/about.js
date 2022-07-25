@@ -1,5 +1,5 @@
 import "../App.css";
-import yeschad from "../components/yeschad.jpg"
+import yeschad from "../images/yeschad.jpg"
 //Change  ulkonäkö ja ehkä naama kuva mukaan. Myös jotain pieni juttu.
 function About() {
     return(
@@ -11,11 +11,11 @@ function About() {
             <div className="">
             <p className="text-center mb-10 w-4/5 mx-auto">
                 This site is made to make wildtalent games easier to manage.
-                There is many weird rules and made up rules for power so it can become hard for gamemasters to run game.
+                There is many weird rules and made up rules for powers so it can become hard for gamemasters to run game.
                 With this site/tool, it would be easier and faster make new rules, power and minions.
                 This also is my exercise to learn full stack with mern stack.
             </p>
-                <p className="text-center">I ain't best making thinks look good, but thinks work!</p>
+                <p className="text-center">I ain't best making things look good, but hey at least they work!</p>
             <img className="rounded-full w-20 mx-auto" src={yeschad} alt="YES"/>
             </div>
         </div>

@@ -33,7 +33,7 @@ routerA.post("/source", async(req,res)=>{
 
 //Delete
 routerA.delete("/source", (req,res)=>{
-    extras.deleteOne({name: req.body.name}, async(err,result)=>{
+    sources.deleteOne({_id: req.body.source._id}, async(err,result)=>{
         if(err){return res.status(500).json({message: err.message})}
         else{return res.status(200).json(result)}
     });
@@ -42,7 +42,7 @@ routerA.delete("/source", (req,res)=>{
 
 //Put
 routerA.put("/source", (req,res)=>{
-    extras.findOneAndUpdate({name: req.body.name}, req.body, {new:true}, async(err,result)=>{
+    sources.findOneAndUpdate({_id: req.body.source._id}, req.body, {new:true}, async(err,result)=>{
         if(err){return res.status(500).json({message: err.message})}
         else{return res.status(200).json(result)}
     });
@@ -79,7 +79,7 @@ routerA.post("/permission", async(req,res)=>{
 
 //Delete
 routerA.delete("/permission", (req,res)=>{
-    extras.deleteOne({name: req.body.name}, async(err,result)=>{
+    permissions.deleteOne({_id: req.body.permission._id}, async(err,result)=>{
         if(err){return res.status(500).json({message: err.message})}
         else{return res.status(200).json(result)}
     });
@@ -88,7 +88,7 @@ routerA.delete("/permission", (req,res)=>{
 
 //Put
 routerA.put("/permission", (req,res)=>{
-    extras.findOneAndUpdate({name: req.body.name}, req.body, {new:true}, async(err,result)=>{
+    permissions.findOneAndUpdate({_id: req.body.permission._id}, req.body, {new:true}, async(err,result)=>{
         if(err){return res.status(500).json({message: err.message})}
         else{return res.status(200).json(result)}
     });
@@ -127,7 +127,7 @@ routerA.post("/arche", async(req,res)=>{
 
 //Delete
 routerA.delete("/arche", (req,res)=>{
-    extras.deleteOne({name: req.body.name}, async(err,result)=>{
+    arches.deleteOne({_id: req.body.arche._id}, async(err,result)=>{
         if(err){return res.status(500).json({message: err.message})}
         else{return res.status(200).json(result)}
     });
@@ -136,7 +136,7 @@ routerA.delete("/arche", (req,res)=>{
 
 //Put
 routerA.put("/arche", (req,res)=>{
-    extras.findOneAndUpdate({name: req.body.name}, req.body, {new:true}, async(err,result)=>{
+    arches.findOneAndUpdate({_id: req.body.arche._id}, req.body, {new:true}, async(err,result)=>{
         if(err){return res.status(500).json({message: err.message})}
         else{return res.status(200).json(result)}
     });

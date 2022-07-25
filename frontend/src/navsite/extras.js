@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import AddPower from "../components/AddPower";
 import DeletePower from "../components/DeletePower";
 
-//lisää tapa järjestää jutut
+//lisää tapa järjestää jutut. Tulevaisuudessa koita pitää functiot täällä ja siirttää niitä componeitteihin mielumminin
 //!!Tee mielummin korteiksi jokainen kyky ja laita ne 3-4 grid cloumeihin ja ruudun mukaa sit 1 asti ja isomlla jne enmmän
 function EXTRA(){
 
