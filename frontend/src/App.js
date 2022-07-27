@@ -4,6 +4,8 @@ import EXTRA from './navsite/extras';
 import About from './navsite/about';
 import MINIONS from './navsite/minions';
 import Home from './navsite/home';
+import Notfound from './navsite/notfound';
+import Miracles from './navsite/miracles';
 //ctrl+space force intelliSense to pop up.
 //Yksi sivu voisi olla encounter jonne voi lisätä unitteja ja hahmoja propsin avulla. SIellä voi vähentää hitlocationia ja willpower
 //Myös encounter tracker olisi kova
@@ -18,13 +20,16 @@ function App() {
         <Link className='mx-5 text-xl text-white' to="/">HOME</Link>
         <Link className='mx-5 text-xl text-white' to="/extra">EXTRA</Link>
         <Link className='mx-5 text-xl text-white' to="/minions">MINIONS</Link>
+        <Link className='mx-5 text-xl text-white' to="/miracles">MIRACLES</Link>
         <Link className='mx-5 text-xl text-white' to="/about">About</Link>
       </nav>
         <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/extra' element={<EXTRA/>} />
             <Route path='/minions' element={<MINIONS/>} />
+            <Route path='/miracles' element={<Miracles/>} />
             <Route path='/about' element={<About/>} />
+            <Route path='*' element={<Notfound/>} />
         </Routes>
     <p className='fixed bottom-0 left-1/2 text-yellow-200'>WIP</p>
     </div>
