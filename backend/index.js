@@ -5,6 +5,7 @@ const router = require("./apis/power");
 const routerE = require("./apis/equipment");
 const routerM = require("./apis/minion");
 const routerA = require("./apis/archetype")
+const routerMir = require("./apis/miracles")
 const cors = require("cors")
 
 const app = express();
@@ -21,9 +22,10 @@ app.use((req,res,next)=>{
 
 app.use(bodyParser.json());
 app.use("/api/power", router);
-app.use("/api/equipment", routerE)
-app.use("/api/minion", routerM)
-app.use("/api/", routerA)
+app.use("/api/equipment", routerE);
+app.use("/api/minion", routerM);
+app.use("/api/", routerA);
+app.use("/api/miracles", routerMir);
 
 //Tee mahdollisesti databaseen admin user varmuudeksi. Hyvät tavat oppia databasen käsittelyssä.
 //Kummiskin teen sitä mariadb ja mysql kanssa niin parempi oppia tässäkin.

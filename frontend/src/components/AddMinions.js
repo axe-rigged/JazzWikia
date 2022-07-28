@@ -23,6 +23,10 @@ function AddMinion(props) {
         saveminion();
     }, [lista])// eslint-disable-line react-hooks/exhaustive-deps
     
+    function saveminion (){
+        //setMinion({name:name, points:0, basewill:basewill, basestats:stat, skills:lista});
+        setMinion({...minion, name:name, points:0, basewill:basewill, basestats:stat, skills:lista});
+    }
     
     const handlerOpen = () =>{
         setOpen(true);
@@ -31,10 +35,6 @@ function AddMinion(props) {
         setOpen(false);
     }
 
-    function saveminion (){
-        //setMinion({name:name, points:0, basewill:basewill, basestats:stat, skills:lista});
-        setMinion({...minion, name:name, points:0, basewill:basewill, basestats:stat, skills:lista});
-    }
 
     function saveMinion() {
         props.SaveMinion(minion);
