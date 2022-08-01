@@ -3,11 +3,6 @@ const router = express.Router();
 const {extras} = require("../models/powers");
 
 //Toimiva database ja perus API pyynnöt. res.status(koodi numero).json({objecti:value}) tai json(object)
-//res.send(string tai object). Selvitä onko eroa
-router.get("/nice", (req,res)=>{
-    res.send("Hello to Wildtalen wikia");
-})
-
 //Extra//
 //Get all power(extras)
 router.get("/", async(req, res)=>{
@@ -19,6 +14,7 @@ router.get("/", async(req, res)=>{
         return res.status(500).json({message: err.message});
     }
 });
+
 
 //Create and save new power(extra)
 router.post("/", async(req,res)=>{
