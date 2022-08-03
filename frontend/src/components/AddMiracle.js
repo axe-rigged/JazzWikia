@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 
 function AddMiracle(props) {
+    
+    const [list, setList] = useState([]);
     useEffect(()=>{
         fetch('http://192.168.8.116:8080/api/power/')
         .then(response=>response.json())
@@ -16,15 +18,15 @@ function AddMiracle(props) {
     //alla oleva cost on ka
     const [lastcost, setLastcost] = useState(0);
     //miraclen rakennus
-    const [mir,setMir] = useState([]); //sisällä on quality, extras/flaws (ei pakko. Pow lisätään extraFlaws:iin), capacity
-    const [quality, setQyality] = useState("");
-    const [extraFlaws, setExtraFlaws] = useState([]);
-    //const [pow, setPow] = useState({name:"", cost:0, ruleforextra:""});
-    const [cap, setCap] = useState("")
+    const [miracles, setMiracles] = useState([]);
+    const [miracle,setMiracle] = useState([]); //sisällä on quality, extras/flaws (ei pakko. Pow lisätään extraFlaws:iin), capacity
+    const [quality, setQuality] = useState("");
+    const [extraFlaws, setExtraFlaws] = useState([]); //Ei tietoa miten lisätä lennosta extrarule. Mahdollisesti tyhjä teksti paikka joka on optional täyttää?
+    const [ruleforextra, setRuleforextra] = useState("");
+    const [capacity, setCapacity] = useState("")
     //^
     const [effect, setEffect] = useState("");
-    
-    
+        
     const handlerOpen = () =>{
         setOpen(true);
     }
@@ -33,24 +35,36 @@ function AddMiracle(props) {
     }
     
     const savePower = () =>{
-        console.log(name)
         //create miracle = useStates+---
+        console.log(name)
         //props.SavePower();
         handlerClose();
     }
     
-    const [list, setList] = useState([]);
+    const newmiracle = () =>{
+        setMiracles([...miracles, miracle]);
+        setQuality("");
+        setExtraFlaws([]);
+        setCapacity("");
+    }
+
     const [searchv, setSearchv] = useState("");
     const addextras = () => {
         var x = list.findIndex(element => element.name === searchv);
+        setLastcost(lastcost + list[x].cost);
         setExtraFlaws([...extraFlaws, list[x]]);
         setSearchv("");
     }
+    const bb = (y) => {
+        const pointsback = extraFlaws.filter(x => x._id === y); //filter retruns array!
+        setLastcost(lastcost - pointsback[0].cost);
+    }
     //remove extra/flaw and remove or add to points/cost. Use arrow syntac onClick when wanna parse values
     const removeindex = (index) => {
+        bb(index);
         setExtraFlaws(extraFlaws.filter(extra => extra._id !== index));
     }
-    //Täydellinen systeemi olisi valita nimi. Sitten automaatisesti valita Qualities joko A, D tai U. Sitten tekee sen. SIt voi plussa toisen A,D tai U ja jne.
+    //Täydellinen systeemi olisi valita nimi. Sitten automaatisesti valita Qualities joko A, D tai U. Sitten tekee sen. SIt voi plussa toisen A,D tai U ja jne. Todella ruma.
     return(
         <>
             <button className="px-10 rounded-full border-solid border-black border-2 text-white bg-emerald-500" onClick={handlerOpen}>Add Miracle</button>
@@ -64,7 +78,7 @@ function AddMiracle(props) {
                     <input name="qualities" type="text" className="border text-center" onChange={(event)=>{setQualities(event.target.value)}} value={qualities}/>
                 </div>
 
-                <div className="mx-auto w-3/5 grid grid-cols-3 mb-2">
+                <div className="mx-auto w-3/5 grid grid-cols-4 my-2">
                     <label>Powers</label>
                     <input className="border" name="search" type="seach" placeholder="Extra/Flaws name" onChange={(event)=>{setSearchv(event.target.value)}} value={searchv} list="powa"/>
                     <datalist id="powa">
@@ -72,16 +86,23 @@ function AddMiracle(props) {
                             list.map((list, index)=><option key={index} value={list.name}/>)
                         }
                     </datalist>
-                    <button className="text-xl rounded-full border-solid border-black border-2 text-white bg-violet-600" onClick={addextras}>+</button>
+                    <button className="text-xl rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-green-500" onClick={addextras}>Add</button>
+                    <button className="text-xl rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-yellow-400" onClick={newmiracle}>New miracle</button>
                 </div>
-                <div className="text-center">
+                <div className="mx-auto w-3/5 grid grid-cols-1 gap-2 my-2">
+                    <input className="text-center text-2xl my-2 border" type="text" name="quality" onChange={(event)=>{setQuality(event.target.value)}} value={quality} placeholder="Quality"/>
+                </div>
+                <div className="text-center grid grid-cols-1 gap-1 place-items-center my-2">
                 {
-                    extraFlaws.map((extra)=><div key={extra._id}>{extra.name}{extra.type}{extra.cost}{extra.effect}<button onClick={()=>removeindex(extra._id)}>X</button></div>)
+                    extraFlaws.map((extra)=><div key={extra._id}>{extra.name}{extra.type}{extra.cost}{extra.effect}<button className="mx-2 text-red-400" onClick={()=>removeindex(extra._id)}>X</button></div>)
                 }
-                <div className="mx-auto w-3/5 grid grid-cols-2 gap-2">
-                    <label>Capacity</label><input className="border" type="text" onChange={(event)=>{setCap(event.target.value)}} value={cap}/>
-                    <label>Effect</label><textarea rows="6" cols="50" className="border" type="text" onChange={(event)=>{setEffect(event.target.value)}} value={effect}/>
                 </div>
+                <div className="grid grid-cols-1 place-items-center mt-4">
+                    <input type="text" className="text-xl border" onChange={(event)=>{setRuleforextra(event.target.value)}} value={ruleforextra} placeholder="Possible extra rules for this power part"/>
+                </div>
+                <div className="mx-auto w-3/5 grid grid-cols-2 gap-2 my-2">
+                    <label>Capacity</label><input className="border" type="text" onChange={(event)=>{setCapacity(event.target.value)}} value={capacity}/>
+                    <label>Effect</label><textarea rows="6" cols="50" className="border" type="text" onChange={(event)=>{setEffect(event.target.value)}} value={effect}/>
                 </div>
                 <br/>
                 <div className="w-1/2 mx-auto grid grid-cols-2 gap-4">

@@ -9,7 +9,7 @@ import Miracles from './navsite/miracles';
 //ctrl+space force intelliSense to pop up.
 //Yksi sivu voisi olla encounter jonne voi lisätä unitteja ja hahmoja propsin avulla. SIellä voi vähentää hitlocationia ja willpower
 //Myös encounter tracker olisi kova
-//Meidän pitää luoda tapa et tämä toimii puhelimella. Kortit mene päin vittua nopeasti
+//Meidän pitää luoda tapa et tämä toimii puhelimella. Kortit mene päin vittua nopeasti. MOBILE FOCUS! ITS 2022 and you are typing for desktop?! LUL
 function App() {
   return (
     <div className="bg-gradient-to-r from-cyan-500 to-violet-500 pb-10 min-h-screen h-full">
