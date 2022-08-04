@@ -15,7 +15,6 @@ function AddMiracle(props) {
     
     const [name, setName] = useState("");
     const [qualities, setQualities] = useState("");
-    //alla oleva cost on ka
     const [lastcost, setLastcost] = useState(0);
     //miraclen rakennus
     const [miracles, setMiracles] = useState([]);
@@ -33,19 +32,20 @@ function AddMiracle(props) {
     const handlerClose = () =>{
         setOpen(false);
     }
-    
     const savePower = () =>{
         //create miracle = useStates+---
-        console.log(name)
+        console.log(miracles)
         //props.SavePower();
         handlerClose();
     }
-    
+    //Jotenin muokata extralawsin sisällä olevat propeties oikein; [name, cost, extrarule]. Delay tapahtuu
     const newmiracle = () =>{
+        setMiracle({quality: quality, extraFlaws: extraFlaws, capacity:capacity})
         setMiracles([...miracles, miracle]);
         setQuality("");
         setExtraFlaws([]);
         setCapacity("");
+        setRuleforextra("");
     }
 
     const [searchv, setSearchv] = useState("");
@@ -97,12 +97,10 @@ function AddMiracle(props) {
                     extraFlaws.map((extra)=><div key={extra._id}>{extra.name}{extra.type}{extra.cost}{extra.effect}<button className="mx-2 text-red-400" onClick={()=>removeindex(extra._id)}>X</button></div>)
                 }
                 </div>
-                <div className="grid grid-cols-1 place-items-center mt-4">
-                    <input type="text" className="text-xl border" onChange={(event)=>{setRuleforextra(event.target.value)}} value={ruleforextra} placeholder="Possible extra rules for this power part"/>
-                </div>
-                <div className="mx-auto w-3/5 grid grid-cols-2 gap-2 my-2">
-                    <label>Capacity</label><input className="border" type="text" onChange={(event)=>{setCapacity(event.target.value)}} value={capacity}/>
-                    <label>Effect</label><textarea rows="6" cols="50" className="border" type="text" onChange={(event)=>{setEffect(event.target.value)}} value={effect}/>
+                <div className="mx-auto w-3/5 grid grid-cols-2 gap-2 my-4">
+                    <label>Extrarule</label><input type="text" className="text-xl border" onChange={(event)=>{setRuleforextra(event.target.value)}} value={ruleforextra} placeholder="Possible extra rules for this power part"/>        
+                    <label>Capacity</label><input className="border" type="text" onChange={(event)=>{setCapacity(event.target.value)}} value={capacity} placeholder="Capacity"/>
+                    <label>Effect</label><textarea rows="6" cols="50" className="border" type="text" onChange={(event)=>{setEffect(event.target.value)}} value={effect} placeholder="Miracles/powers effect"/>
                 </div>
                 <br/>
                 <div className="w-1/2 mx-auto grid grid-cols-2 gap-4">
