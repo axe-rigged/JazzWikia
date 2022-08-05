@@ -14,7 +14,7 @@ function AddMinion(props) {
 
     const [lista, setLista] = useState([]);
     const [skill, setSkill] = useState({skill:"", dices:0});
-    
+    //Pitäisi tehdä form/required ennen lähetystä ja try juttuja
     //Clear, delete and edit buttons needed. Different component. Jalka component tiedoille ja pika tiedoille
     //WE could just track all stats and creat object before send it to backend.
     //Miksi tää on tapa nytten saada toimimaan koko homaa?!?! ME päivitetään koko minion objecti aina kun lisata muutetaan a.k.a lisätään objecteja. Kummiskin pitää olla yksi minimissä backendia varten vaikaa ei ole requmentia laitettu vielä
@@ -25,7 +25,7 @@ function AddMinion(props) {
     
     function saveminion (){
         //setMinion({name:name, points:0, basewill:basewill, basestats:stat, skills:lista});
-        setMinion({...minion, name:name, points:0, basewill:basewill, basestats:stat, skills:lista});
+        setMinion({...minion, name:name, points:0, basewill:basewill, basestats:stat, skills:lista}); //Puuttuu piste määrä lasku
     }
     
     const handlerOpen = () =>{

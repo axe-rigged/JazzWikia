@@ -2,6 +2,21 @@
 import { useState, useEffect } from "react";
 
 function AddMiracle(props) {
+       
+    const [open, setOpen] = useState(false);
+    
+    const [name, setName] = useState("");
+    const [qualities, setQualities] = useState("");
+    const [lastcost, setLastcost] = useState(0);
+    //miraclen rakennus
+    const [miracles, setMiracles] = useState([]);
+    const [miracle,setMiracle] = useState({quality:"", extraFlaws:[], ruleforextra:"" ,capacity:""}); //sisällä on quality, extras/flaws (ei pakko. Pow lisätään extraFlaws:iin), capacity
+    const [quality, setQuality] = useState("");
+    const [extraFlaws, setExtraFlaws] = useState([]); //Ei tietoa miten lisätä lennosta extrarule. Mahdollisesti tyhjä teksti paikka joka on optional täyttää?
+    const [ruleforextra, setRuleforextra] = useState("");
+    const [capacity, setCapacity] = useState("");
+    //^
+    const [effect, setEffect] = useState("");
     
     const [list, setList] = useState([]);
     useEffect(()=>{
@@ -11,21 +26,13 @@ function AddMiracle(props) {
         .catch(err=>console.error(err))
     },[]);
 
-    const [open, setOpen] = useState(false);
+    //Täytyy keksi tai tehdä oma hooki päivittämistä varten? Tai löytää kirajsto kuten redux.... tai parempi frontframe
+    const updatemiracles = () => {setMiracles([...miracles, miracle]);}
+
+    useEffect(()=>{
+        updatemiracles();// eslint-disable-next-line
+    },[miracle]);
     
-    const [name, setName] = useState("");
-    const [qualities, setQualities] = useState("");
-    const [lastcost, setLastcost] = useState(0);
-    //miraclen rakennus
-    const [miracles, setMiracles] = useState([]);
-    const [miracle,setMiracle] = useState([]); //sisällä on quality, extras/flaws (ei pakko. Pow lisätään extraFlaws:iin), capacity
-    const [quality, setQuality] = useState("");
-    const [extraFlaws, setExtraFlaws] = useState([]); //Ei tietoa miten lisätä lennosta extrarule. Mahdollisesti tyhjä teksti paikka joka on optional täyttää?
-    const [ruleforextra, setRuleforextra] = useState("");
-    const [capacity, setCapacity] = useState("");
-    //^
-    const [effect, setEffect] = useState("");
-        
     const handlerOpen = () =>{
         setOpen(true);
     }
@@ -34,21 +41,20 @@ function AddMiracle(props) {
     }
     const savePower = () =>{
         //create miracle = useStates+---
-        console.log(miracles)
         //props.SavePower();
         handlerClose();
+        console.log(miracles)
     }
     //Jotenin muokata extralawsin sisällä olevat propeties oikein; [name, cost, extrarule]. Delay tapahtuu
     const newmiracle = () =>{
-        setMiracle({quality: quality, extraFlaws: extraFlaws, capacity:capacity})
-        setMiracles([...miracles, miracle]);
+        setMiracle({...miracle, quality: quality, extraFlaws: extraFlaws, ruleforextra:ruleforextra, capacity:capacity});
         setQuality("");
         setExtraFlaws([]);
         setCapacity("");
         setRuleforextra("");
     }
 
-    const [searchv, setSearchv] = useState("");
+    const [searchv, setSearchv] = useState(""); //try jos on tyhjä haku niin ei toimi. Anna error log consolee tai jotain
     const addextras = () => {
         var x = list.findIndex(element => element.name === searchv);
         setLastcost(lastcost + list[x].cost);
