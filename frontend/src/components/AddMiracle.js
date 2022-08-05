@@ -9,7 +9,7 @@ function AddMiracle(props) {
         .then(response=>response.json())
         .then(data=>setList(data))
         .catch(err=>console.error(err))
-    },[])
+    },[]);
 
     const [open, setOpen] = useState(false);
     
@@ -22,7 +22,7 @@ function AddMiracle(props) {
     const [quality, setQuality] = useState("");
     const [extraFlaws, setExtraFlaws] = useState([]); //Ei tietoa miten lisätä lennosta extrarule. Mahdollisesti tyhjä teksti paikka joka on optional täyttää?
     const [ruleforextra, setRuleforextra] = useState("");
-    const [capacity, setCapacity] = useState("")
+    const [capacity, setCapacity] = useState("");
     //^
     const [effect, setEffect] = useState("");
         

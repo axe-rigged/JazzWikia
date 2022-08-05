@@ -13,7 +13,7 @@ routerMir.get("/", async(req, res)=>{
         return res.status(500).json({message: err.message});
     }
 });
-//Create
+//Create WE MIGHT NEED TO DO SOMEWORK HERE
 routerMir.post("/", async(req,res)=>{
     console.log(req.body);
     const mira = new miracles({
