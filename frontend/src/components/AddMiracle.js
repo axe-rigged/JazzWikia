@@ -1,5 +1,5 @@
 //AddMiracle//DeleteMIracle
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 function AddMiracle(props) {
        
@@ -15,10 +15,10 @@ function AddMiracle(props) {
     const [extraFlaws, setExtraFlaws] = useState([]); //Ei tietoa miten lisätä lennosta extrarule. Mahdollisesti tyhjä teksti paikka joka on optional täyttää?
     const [ruleforextra, setRuleforextra] = useState("");
     const [capacity, setCapacity] = useState("");
-    //^
     const [effect, setEffect] = useState("");
-    
+    //^
     const [list, setList] = useState([]);
+    
     useEffect(()=>{
         fetch('http://192.168.8.116:8080/api/power/')
         .then(response=>response.json())
@@ -27,10 +27,10 @@ function AddMiracle(props) {
     },[]);
 
     //Täytyy keksi tai tehdä oma hooki päivittämistä varten? Tai löytää kirajsto kuten redux.... tai parempi frontframe
-    const updatemiracles = () => {setMiracles([...miracles, miracle]);}
-
+    const updatemiracles = useCallback(() => {setMiracles([...miracles, miracle]);},[miracle,miracles])
+    //Ensiksi katsotaan et jokin asia ei ole empty ja jos on niin me ei päivitetä! Tämä tapahtuu heti kun setMiracle tapahtuu.
     useEffect(()=>{
-        updatemiracles();// eslint-disable-next-line
+        if(miracle.quality !== ""){updatemiracles();}// eslint-disable-next-line
     },[miracle]);
     
     const handlerOpen = () =>{
@@ -45,21 +45,24 @@ function AddMiracle(props) {
         handlerClose();
         console.log(miracles)
     }
-    //Jotenin muokata extralawsin sisällä olevat propeties oikein; [name, cost, extrarule]. Delay tapahtuu
+    //Jotenin muokata extralawsin sisällä olevat propeties oikein; [name, cost, extrarule]. Delay tapahtuu... Callback?
     const newmiracle = () =>{
-        setMiracle({...miracle, quality: quality, extraFlaws: extraFlaws, ruleforextra:ruleforextra, capacity:capacity});
+        setMiracle({quality: quality, extraFlaws: extraFlaws, ruleforextra:ruleforextra, capacity:capacity});
         setQuality("");
         setExtraFlaws([]);
-        setCapacity("");
         setRuleforextra("");
+        setCapacity("");
     }
 
     const [searchv, setSearchv] = useState(""); //try jos on tyhjä haku niin ei toimi. Anna error log consolee tai jotain
     const addextras = () => {
-        var x = list.findIndex(element => element.name === searchv);
-        setLastcost(lastcost + list[x].cost);
-        setExtraFlaws([...extraFlaws, list[x]]);
-        setSearchv("");
+        if(searchv !== ""){
+            var x = list.findIndex(element => element.name === searchv);
+            setLastcost(lastcost + list[x].cost);
+            setExtraFlaws([...extraFlaws, list[x]]);
+            setSearchv("");
+        }
+        else{console.log("Extra isn't been choosen")}
     }
     const bb = (y) => {
         const pointsback = extraFlaws.filter(x => x._id === y); //filter retruns array!
@@ -92,8 +95,8 @@ function AddMiracle(props) {
                             list.map((list, index)=><option key={index} value={list.name}/>)
                         }
                     </datalist>
-                    <button className="text-xl rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-green-500" onClick={addextras}>Add</button>
-                    <button className="text-xl rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-yellow-400" onClick={newmiracle}>New miracle</button>
+                    <button className="text-xl rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-green-500" onClick={() =>{addextras()}}>Add</button>
+                    <button className="text-xl rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-yellow-400" onClick={()=>{newmiracle()}}>New miracle</button>
                 </div>
                 <div className="mx-auto w-3/5 grid grid-cols-1 gap-2 my-2">
                     <input className="text-center text-2xl my-2 border" type="text" name="quality" onChange={(event)=>{setQuality(event.target.value)}} value={quality} placeholder="Quality"/>
@@ -110,8 +113,8 @@ function AddMiracle(props) {
                 </div>
                 <br/>
                 <div className="w-1/2 mx-auto grid grid-cols-2 gap-4">
-                    <button className="px-10 rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-green-500" onClick={savePower}>Save</button>
-                    <button className="px-10 rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-red-500" onClick={handlerClose}>Cancel</button>
+                    <button className="px-10 rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-green-500" onClick={()=>{savePower()}}>Save</button>
+                    <button className="px-10 rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-red-500" onClick={()=>{handlerClose()}}>Cancel</button>
                 </div>
             </dialog>
         </>
