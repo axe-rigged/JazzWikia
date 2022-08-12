@@ -20,7 +20,7 @@ routerMir.post("/", async(req,res)=>{
         name: req.body.name,
         cost: req.body.cost,
         qualities: req.body.qualities,
-        extraFlaws: req.body.extraFlaws,
+        miracles: req.body.miracles,
         effect: req.body.effect
     });
     try{

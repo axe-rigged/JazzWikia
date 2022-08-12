@@ -26,7 +26,7 @@ function AddMiracle(props) {
         .catch(err=>console.error(err))
     },[]);
 
-    //Täytyy keksi tai tehdä oma hooki päivittämistä varten? Tai löytää kirajsto kuten redux.... tai parempi frontframe
+    //Callback varmaan turha, mutta ei tietoa vielä...
     const updatemiracles = useCallback(() => {setMiracles([...miracles, miracle]);},[miracle,miracles])
     //Ensiksi katsotaan et jokin asia ei ole empty ja jos on niin me ei päivitetä! Tämä tapahtuu heti kun setMiracle tapahtuu.
     useEffect(()=>{
@@ -40,12 +40,13 @@ function AddMiracle(props) {
         setOpen(false);
     }
     const savePower = () =>{
-        //create miracle = useStates+---
-        //props.SavePower();
-        handlerClose();
+        var newmiracle = {name:name, cost:lastcost, qualities:qualities, miracles:miracles, effect:effect};
+        props.SavePower(newmiracle);
+        handlerClose(); //Sulkemisen jälkee pitäisi tyhjentää tiedot!!!!
         console.log(miracles)
     }
-    //Jotenin muokata extralawsin sisällä olevat propeties oikein; [name, cost, extrarule]. Delay tapahtuu... Callback?
+    //Mahdollisesti joudutaan siirtämään muut setStates paitsi miracle updatemiraclesiin...
+    //Pitäisi tehdä ennen lähetystä myös, mutta async tekee tästä tuskallista
     const newmiracle = () =>{
         setMiracle({quality: quality, extraFlaws: extraFlaws, ruleforextra:ruleforextra, capacity:capacity});
         setQuality("");
@@ -54,7 +55,7 @@ function AddMiracle(props) {
         setCapacity("");
     }
 
-    const [searchv, setSearchv] = useState(""); //try jos on tyhjä haku niin ei toimi. Anna error log consolee tai jotain
+    const [searchv, setSearchv] = useState(""); //try jos on tyhjä haku niin ei toimi. Anna error log consolee tai jotain. If parempi tässä
     const addextras = () => {
         if(searchv !== ""){
             var x = list.findIndex(element => element.name === searchv);
