@@ -23,7 +23,7 @@ function Miracles() {
     useEffect(()=>{
         fetchMiracels();
     },[])
-
+    //extraFlaws on array huomio||delete nappi tarvitaan
     return(
         <div>
             <div className="grid grid-cols-2 w-2/5 mx-auto mb-4">
@@ -31,7 +31,11 @@ function Miracles() {
             <AddMiracle SavePower={SavePower}/>
             </div>
             <div className="w-4/5 bg-slate-700 border-solid border-4 border-violet-800 mx-auto min-h-screen rounded-lg">
-                {mir.map((mir, index)=><div key={index}>{mir.name}</div>)}
+                {mir.map((mir, index)=><div key={index} className="grid grid-cols-3 w-4/5 mx-auto my-4 p-2 border-black border-2 border-solid bg-slate-500 place-items-center">
+                        <h1>{mir.name} || {mir.cost}</h1>
+                            {mir.miracles.map((m, index)=><div key={index}><h1>{m.quality}</h1><h1>{m.ruleforextra}</h1></div>)}
+                        <h1>{mir.effect}</h1>
+                    </div>)}
             </div>
         </div>
     );
