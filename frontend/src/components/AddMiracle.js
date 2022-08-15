@@ -7,7 +7,7 @@ function AddMiracle(props) {
     
     const [name, setName] = useState("");
     const [qualities, setQualities] = useState("");
-    const [lastcost, setLastcost] = useState(0);
+    const [lastcost, setLastcost] = useState(0); //Meidän pitää lisätä jokaisesta qualitystä +2
     //miraclen rakennus
     const [miracles, setMiracles] = useState([]);
     const [miracle,setMiracle] = useState({quality:"", extraFlaws:[], ruleforextra:"" ,capacity:""}); //sisällä on quality, extras/flaws (ei pakko. Pow lisätään extraFlaws:iin), capacity

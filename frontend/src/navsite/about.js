@@ -3,7 +3,7 @@ import yeschad from "../images/yeschad.jpg"
 //Change  ulkonäkö ja ehkä naama kuva mukaan. Myös jotain pieni juttu.
 function About() {
     return(
-        <div className="w-3/5 mx-auto border-purple-800 border-4 border-solid bg-slate-800 rounded-full text-white">
+        <div className="w-3/5 mx-auto border-purple-800 border-4 border-solid bg-slate-800 rounded-full text-white p-2">
             <h1 className="text-center text-2xl py-2">
                 What is this?
             </h1>

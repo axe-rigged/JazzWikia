@@ -34,9 +34,9 @@ function MINIONS(){
         <h1 className="font-bold text-2xl text-center pb-5">Minions:</h1>
         <AddMinion SaveMinion={SaveMinion}/>
         </div>
-        <div className="grid grid-cols-4 gap-2 w-4/5 mx-auto">
+        <div className="grid grid-cols-4 gap-2 w-4/5 mx-auto bg-slate-800 place-items-center p-4 border-purple-800 border-solid rounded-lg border-4">
             {
-                minions.map((minions, index)=><div className="overflow-y-auto border-solid border-purple-800 border-4 max-h-600 rounded-lg min-w-min max-w-xs bg-slate-800 text-white">
+                minions.map((minions, index)=><div className="overflow-y-auto border-solid border-black border-4 rounded-lg max-h-600 min-h-full min-w-320 max-w-xs bg-slate-600 text-white">
                     <div className="grid grid-cols-6 place-items-center">
                     <h1 className="underline text-xl text-center col-start-3 col-end-5">{minions.name}</h1>
                     <DeleteMinion minionsAtr={{minions,fetchMinions}}/>

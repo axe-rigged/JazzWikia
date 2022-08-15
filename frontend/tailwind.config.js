@@ -5,6 +5,9 @@ module.exports = {
       maxHeight:{
         '600':'38rem',
       },
+      minWidth: {
+        '320': '320px',
+      }
   },
   plugins: [],
 }
