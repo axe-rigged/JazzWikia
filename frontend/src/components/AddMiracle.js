@@ -40,10 +40,19 @@ function AddMiracle(props) {
         setOpen(false);
     }
     const savePower = () =>{
-        var newmiracle = {name:name, cost:lastcost, qualities:qualities, miracles:miracles, effect:effect};
-        props.SavePower(newmiracle);
-        handlerClose(); //Sulkemisen jälkee pitäisi tyhjentää tiedot!!!!
-        console.log(miracles)
+        var newmir = {name:name, cost:lastcost+(qualities.length*2), qualities:qualities, miracles:miracles, effect:effect}; //Parempi tapa tarvitaan qualities tarkistukseen ja oikein lasku lastcost.
+        props.SavePower(newmir);
+        handlerClose(); //Sulkemisen jälkee pitäisi tyhjentää tiedot!!!! Ja ennen tallennusta aseta varmuudeksi newmiracle()
+        setName("");
+        setQualities("");
+        setLastcost(0);
+        setMiracles([]);
+        setMiracle({quality:"", extraFlaws:[], ruleforextra:"" ,capacity:""});
+        setQuality("");
+        setExtraFlaws([]);
+        setRuleforextra("");
+        setCapacity("");
+        setEffect("");
     }
     //Mahdollisesti joudutaan siirtämään muut setStates paitsi miracle updatemiraclesiin...
     //Pitäisi tehdä ennen lähetystä myös, mutta async tekee tästä tuskallista
@@ -96,8 +105,8 @@ function AddMiracle(props) {
                             list.map((list, index)=><option key={index} value={list.name}/>)
                         }
                     </datalist>
-                    <button className="text-xl rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-green-500" onClick={() =>{addextras()}}>Add</button>
-                    <button className="text-xl rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-yellow-400" onClick={()=>{newmiracle()}}>New miracle</button>
+                    <button className="text-xl rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-green-500" onClick={() =>{addextras()}}>Add extra</button>
+                    <button className="text-xl rounded-full border-solid border-black border-2 text-white bg-violet-600 hover:bg-yellow-400" onClick={()=>{newmiracle()}}>New Q or Save</button>
                 </div>
                 <div className="mx-auto w-3/5 grid grid-cols-1 gap-2 my-2">
                     <input className="text-center text-2xl my-2 border" type="text" name="quality" onChange={(event)=>{setQuality(event.target.value)}} value={quality} placeholder="Quality"/>

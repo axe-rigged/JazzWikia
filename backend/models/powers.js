@@ -10,7 +10,7 @@ var miracle = new Schema(
         miracles:[{  
             quality:{type: String, required: true, maxlength:100}, //Which quality NEEDED Attack, useful, denfense
             extraFlaws: [{
-                extraFlawName:{type: String, required: false, maxlength: 100}, //what extra/flaws gets NOT NEEDED ALWAYS
+                name:{type: String, required: false, maxlength: 100}, //what extra/flaws gets NOT NEEDED ALWAYS
                 cost:{type: Number, required: false}, //cost for extra NOT NEEDED ALWAYS
             }],
             ruleforextra:{type: String, required: false, maxlength:100}, //if/then yleensä tarvii tän NOT NEEDED ALWAYS
