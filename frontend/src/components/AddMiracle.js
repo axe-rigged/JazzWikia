@@ -40,7 +40,7 @@ function AddMiracle(props) {
         setOpen(false);
     }
     const savePower = () =>{
-        var newmir = {name:name, cost:lastcost+(qualities.length*2), qualities:qualities, miracles:miracles, effect:effect}; //Parempi tapa tarvitaan qualities tarkistukseen ja oikein lasku lastcost.
+        var newmir = {name:name, cost:lastcost+(qualities.length*2), qualities:qualities, miracles:miracles, effect:effect}; //Jotenkin updatea et ei tarvitse painaa new quality ja mieti miten tarkistaa qualities cost paremmin.
         props.SavePower(newmir);
         handlerClose(); //Sulkemisen jälkee pitäisi tyhjentää tiedot!!!! Ja ennen tallennusta aseta varmuudeksi newmiracle()
         setName("");

@@ -16,6 +16,9 @@ routerMir.get("/", async(req, res)=>{
 //Create WE MIGHT NEED TO DO SOMEWORK HERE
 routerMir.post("/", async(req,res)=>{
     console.log(req.body);
+
+    if(req.body.cost < 0){req.body.cost = 1;}//cost pitää aina olla min yksi.
+
     const mira = new miracles({
         name: req.body.name,
         cost: req.body.cost,
@@ -33,7 +36,7 @@ routerMir.post("/", async(req,res)=>{
 });
 //Delete
 routerMir.delete("/", (req,res)=>{
-    console.log(req.body.extra)
+    console.log(req.body)
     miracles.deleteOne({_id: req.body.miracle._id}, async(err,result)=>{
         if(err){return res.status(500).json({message: err.message})}
         else{return res.status(200).json(result)}
@@ -42,7 +45,7 @@ routerMir.delete("/", (req,res)=>{
 });
 //PUT 
 routerMir.put("/", (req,res)=>{
-    miracles.findOneAndUpdate({_id: req.body.miracle._id}, req.body, {new:true}, async(err,result)=>{
+    miracles.findOneAndUpdate({_id: req.body.mir._id}, req.body, {new:true}, async(err,result)=>{
         if(err){return res.status(500).json({message: err.message})}
         else{return res.status(200).json(result)}
     });
