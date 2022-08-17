@@ -6,8 +6,7 @@ function DeleteMiracle(props){
 
     const deletemir = () => {
         console.log(props.mira.mir._id)
-        var mir = props.mira.mir;
-        props.mira.deleteMiracle(mir);
+        props.mira.deleteMiracle(props.mira.mir);
         setOpen(false);
     }
 

@@ -117,9 +117,9 @@ function AddMiracle(props) {
                 }
                 </div>
                 <div className="mx-auto w-3/5 grid grid-cols-2 gap-2 my-4">
-                    <label>Extrarule</label><input type="text" className="text-xl border" onChange={(event)=>{setRuleforextra(event.target.value)}} value={ruleforextra} placeholder="Possible extra rules for this power part"/>        
-                    <label>Capacity</label><input className="border" type="text" onChange={(event)=>{setCapacity(event.target.value)}} value={capacity} placeholder="Capacity"/>
-                    <label>Effect</label><textarea rows="6" cols="50" className="border" type="text" onChange={(event)=>{setEffect(event.target.value)}} value={effect} placeholder="Miracles/powers effect"/>
+                    <label>Extrarule</label><input type="text" className="text-xl border text-center" onChange={(event)=>{setRuleforextra(event.target.value)}} value={ruleforextra} placeholder="Possible extra rules for this power part"/>        
+                    <label>Capacity</label><input className="border text-center" type="text" onChange={(event)=>{setCapacity(event.target.value)}} value={capacity} placeholder="Capacity"/>
+                    <label>Effect</label><textarea rows="6" cols="50" className="border text-center" type="text" onChange={(event)=>{setEffect(event.target.value)}} value={effect} placeholder="Miracles/powers effect"/>
                 </div>
                 <br/>
                 <div className="w-1/2 mx-auto grid grid-cols-2 gap-4">

@@ -45,7 +45,7 @@ routerMir.delete("/", (req,res)=>{
 });
 //PUT 
 routerMir.put("/", (req,res)=>{
-    miracles.findOneAndUpdate({_id: req.body.mir._id}, req.body, {new:true}, async(err,result)=>{
+    miracles.findOneAndUpdate({_id: req.body.miracle._id}, req.body, {new:true}, async(err,result)=>{
         if(err){return res.status(500).json({message: err.message})}
         else{return res.status(200).json(result)}
     });

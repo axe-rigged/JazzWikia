@@ -31,7 +31,7 @@ function Miracles() {
         fetchMiracels();
     },[])
 
-    //Ehkä componenti extraFlaws jotta voidaan nopeasti tehdä alert/dialog jossa näkyis kaikki extrat ja flwasit
+    //Ehkä componenti extraFlaws jotta voidaan nopeasti tehdä alert/dialog jossa näkyis kaikki extrat ja flwasit. Hover tietona kaikki extrat ja flawsit omaan quality osa alueeseen?
     //Keywordit kuten effect, quality ja ranget eri väreillä? Parempi layout kaikille statseille ja teksti selkeämmäksi (eri värejä)
     return(
         <div>
@@ -41,10 +41,10 @@ function Miracles() {
             </div>
             <div className="w-4/5 bg-slate-800 border-solid border-4 border-violet-800 mx-auto min-h-screen rounded-lg text-white text-xl">
                 {mir.map((mir, index)=><div key={index} className="gap-3 grid grid-cols-6 grid-rows-2 w-4/5 mx-auto my-4 p-2 border-black border-2 border-solid bg-slate-600 place-items-center rounded-lg text-center">
-                        <h1 className="col-span-6 underline">Miracle name: {mir.name} || Cost: {mir.cost} || Qualities: {mir.qualities}  <DeleteMiracle mira={{deleteMiracle, mir}}/></h1>
+                        <h1 className="col-span-6 underline decoration-violet-800 decoration-double">Miracle name: {mir.name} || Cost: {mir.cost} || Qualities: {mir.qualities}  <DeleteMiracle mira={{deleteMiracle, mir}}/></h1>
                         
-                            {mir.miracles.map((m, index)=><div key={index} className="col-span-2"><p>{m.quality} || {m.capacity}</p><p>{m.ruleforextra}</p></div>)}
-                            {mir.miracles.map((m)=><div>{m.extraFlaws.map((e, index)=><div key={index} className="col-span-2">{e.name} {e.cost}</div>)}</div>)}
+                            {mir.miracles.map((m, index)=><div key={index} className="col-span-2"><h1>{m.quality} || {m.capacity}</h1><p>{m.ruleforextra}</p></div>)}
+                            {mir.miracles.map((m)=><div>{m.extraFlaws.map((e, index)=><div key={index} className="col-span-2">{e.name}</div>)}</div>)}
 
                         <h1 className="col-span-6">Effect: {mir.effect}</h1>
                     </div>)}
