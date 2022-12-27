@@ -1,5 +1,5 @@
 # JazzWikia
-SteamJazz tabletop role-playing game wiki --> wildtalent wiki
+Project has been throw to trashbin, because it has many design flaws and code is too messy. Backend JS(nodejs) aint imo good. I rather have python and sql backend thatn js and mongodb, but I learned lot.
 
 ## Ready to use for...
 * To create miracles and powers
